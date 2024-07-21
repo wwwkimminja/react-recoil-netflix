@@ -54,6 +54,27 @@ height: 200px;
 background-image: url(${(props) => props.bgPhoto});
 background-size: cover;
 background-position: center center;
+&:first-child{
+  transform-origin:center left;
+}
+&:last-child{
+  transform-origin:center right;
+
+}
+`
+
+const Info=styled(motion.div)`
+  padding:10px;
+  position:absolute;
+  background-color:${props=>props.theme.black.lighter};
+  opacity:0;
+  width: 100%;
+  bottom:0;
+  h4 {
+    text-align:center;
+    font-size:18px;
+  }
+
 `
 const rowVariants = {
   hidden: {
@@ -66,7 +87,32 @@ const rowVariants = {
     x: -window.outerWidth - 5
   }
 }
+const boxVariants={
+  normal:{
+    scale:1,
+  },
+  hover:{
+    scale:1.3,
+    y:-80,
+    transition:{
+      delay:0.5,
+      duration:0.2,
+      type:"tween"
+    }
 
+  }
+}
+
+const infoVariants={
+  hover:{
+    opacity:1,
+    transition:{
+      delay:0.5,
+      duration:0.2,
+      type:"tween"
+    }
+  }
+}
 const offset = 6;
 
 function Home() {
@@ -111,9 +157,20 @@ function Home() {
                   .slice(offset * index, offset * index + offset)
                   .map(movie =>
                     <Box
+                    variants={boxVariants}
                       key={movie.id}
+                      initial="normal"
+                      whileHover="hover"
+                      transition={{type:"tween"}}
                       bgPhoto={makeImagePath(movie.backdrop_path,"w500")}
-                    />)}
+                    >
+                    <Info variants={infoVariants} >
+                      <h4>{movie.title}</h4>
+                      </Info>
+                    </Box>
+                    
+                    )}
+
               </Row>
             </AnimatePresence>
 
