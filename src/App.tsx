@@ -14,10 +14,10 @@ function App() {
         {/* <Route path="/">
           <Home />
         </Route> */}
-        <Route path="/tv">
+        <Route path={["/tv","/tv/:id"]}>
           <Tv />
         </Route>
-        <Route path={["/search","/search/:movieId"]}>
+        <Route path={["/search","/search/:id"]}>
           <Search />
         </Route>
         <Route path={["/","/movies/:movieId"]}>
