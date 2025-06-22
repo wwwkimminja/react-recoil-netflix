@@ -2,7 +2,7 @@
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://wwwkimminja.github.io/netflix-clone)
+[View Live Demo](https://wwwkimminja.github.io/react-recoil-netflix)
 
 ## 🛠 Tech Stack
 
